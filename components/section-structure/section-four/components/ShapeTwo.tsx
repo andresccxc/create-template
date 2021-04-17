@@ -1,9 +1,10 @@
+import DeleteIcon from '../../../DeletIcon';
 import { ContainerShapeTwo } from '../Styles';
 
 
-const ShapeTwo = ({ setComponent }: any) => {
+const ShapeTwo = ({ setComponent, index, remove = false, removeComponent }: any) => {
     return (
-        <ContainerShapeTwo className='rounded' onClick={setComponent}>
+        <ContainerShapeTwo className='rounded relative' onClick={setComponent}>
             <div className="columnf-footer flex justify-center py-2 items-center flex-wrap mt-3">
                 <div className='footer-column'>
                     <img className='col-img m-auto' src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/ecosystem/payment.svg" alt="card image" />
@@ -19,7 +20,7 @@ const ShapeTwo = ({ setComponent }: any) => {
                 </div>
                 <small className='copyright block w-full text-center mt-1'>© 2021, Google.</small>
             </div>
-
+            {remove && (<DeleteIcon remove={() => removeComponent(index)} />)}
         </ContainerShapeTwo>
     );
 }

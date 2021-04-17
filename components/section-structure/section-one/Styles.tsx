@@ -22,6 +22,19 @@ export const ContainerShapeOne: any = styled.div`
          margin-right:none;
        }
     }
+    .delete-header{
+      width:20px;
+      height:20px;
+      background-color:#a10303;
+      right:-5px;
+      top:-10px;
+      font-size:12px;
+      border-radius:100%;
+      transition:.4s all;
+      &:active{
+        transform:scale(.96);
+      }
+    }
 `;
 
 export const ContainerShapeTwo:any = styled.div`

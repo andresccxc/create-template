@@ -6,14 +6,16 @@ import { Container } from './Styles';
 
 
 const SectionFour = () => {
-    const { setSectionFour } = useContext(PrincipalContext);
+    const { setSectionFour,sectionFour } = useContext(PrincipalContext);
+
+    const addComponent = (component: string) => setSectionFour([...sectionFour, component]);
 
     return (
         <div className='flex flex-col items-center'>
             <h2 className='font-bold text-2xl mb-5'>Estructura del Footer</h2>
             <Container>
-                <ShapeOne setComponent={()=>setSectionFour('one')}/>
-                <ShapeTwo setComponent={()=>setSectionFour('two')}/>
+                <ShapeOne setComponent={()=>addComponent('one')}/>
+                <ShapeTwo setComponent={()=>addComponent('two')}/>
             </Container>
         </div>
     );
@@ -30,6 +32,7 @@ export const SectionFourComponent = () => {
         'one': <ShapeOne />,
         'two': <ShapeTwo />,
     };
+    console.log('la section',sectionFour)
 
     return (
         <>
