@@ -7,13 +7,15 @@ import EditIcon from '../../EditIcon';
 
 const SectionThree = () => {
 
-    const { setSectionThree } = useContext(PrincipalContext);
+    const { setSectionThree, sectionThree } = useContext(PrincipalContext);
+    const addComponent = (component: string) => setSectionThree([...sectionThree, component]);
+
     return (
         <div className='flex flex-col items-center'>
-            <h2 className='font-bold text-2xl mb-5'>Estructura del banner</h2>
+            <h2 className='font-bold text-2xl mb-5'>Estructura del section x</h2>
             <Container>
-                <ShapeOne setComponent={() => setSectionThree('one')} border='#f1f1f1' />
-                <ShapeTwo setComponent={() => setSectionThree('two')} border='#f1f1f1' />
+                <ShapeOne setComponent={() => addComponent('one')} border='#f1f1f1' />
+                <ShapeTwo setComponent={() => addComponent('two')} border='#f1f1f1' />
             </Container>
         </div>
     );
@@ -22,10 +24,20 @@ const SectionThree = () => {
 export default SectionThree;
 
 export const SectionThreeComponent = () => {
-    const { sectionThree } = useContext(PrincipalContext);
-    const renderSection = {
-        'one': <ShapeOne />,
-        'two': <ShapeTwo />,
+
+    const { sectionThree, setSectionThree } = useContext(PrincipalContext);
+
+    const removeComponent = (index: number) => {
+        setSectionThree(sectionThree.filter((ele: any, ind: number) => ind !== index));
     };
-    return (<>{renderSection[sectionThree]} </>);
+
+    return (<>
+        {sectionThree?.map((ele: string, index: number) => {
+            return ele === 'one' ? (
+                <ShapeOne key={`section-${index}`} remove={true} removeComponent={()=>removeComponent(index)}/>
+            ) : (
+                <ShapeTwo key={`section-${index}`} remove={true} removeComponent={()=>removeComponent(index)}/>
+            );
+        })}
+    </>);
 };

@@ -1,7 +1,7 @@
 import { ContainerShapeOne } from '../Styles';
 import DeleteIcon from '../../../DeletIcon';
 
-const ShapeOne = ({ data, setComponent, index, remove = false, removeComponent }: any) => {
+const ShapeOne = ({ data, setComponent, remove = false, removeComponent }: any) => {
 
     return (
         <ContainerShapeOne
@@ -16,7 +16,7 @@ const ShapeOne = ({ data, setComponent, index, remove = false, removeComponent }
                 ))}
                 {data?.content?.shoppingCart && (<i className="fas fa-shopping-cart shapeone-link pt-1" />)}
             </nav>
-            {remove && (<DeleteIcon remove={() => removeComponent(index)} />)}
+            {remove && (<DeleteIcon remove={removeComponent} />)}
         </ContainerShapeOne>
     );
 }

@@ -37,16 +37,14 @@ export const SectionOneComponent = () => {
                 return ele === 'one' ? (
                     (<ShapeOne key={`shape-${index}`}
                         data={section_one?.header_one}
-                        index={index}
                         remove={true}
-                        removeComponent={removeComponent}
+                        removeComponent={()=>removeComponent(index)}
                     />)
                 ) : (<ShapeTwo
                     key={`shape-${index}`}
                     data={section_one?.header_two}
-                    index={index}
                     remove={true}
-                    removeComponent={removeComponent}
+                    removeComponent={()=>removeComponent(index)}
                 />)
             })}
 

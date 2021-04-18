@@ -16,6 +16,7 @@ const Modal = () => {
     const sendClass = bgsend === '#075E54' && 'active-button';
     const bgSend2 = textImage.description ? '#075E54' : 'gray';
     const sendClass2 = bgSend2 === '#075E54' && 'active-button';
+    console.log('las imagenes',images)
 
 
     const closeModal = () => {

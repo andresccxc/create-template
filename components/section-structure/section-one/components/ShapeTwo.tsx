@@ -1,7 +1,7 @@
 import { ContainerShapeTwo } from '../Styles';
 import DeleteIcon from '../../../DeletIcon';
 
-const ShapeTwo = ({ setComponent, data, index, remove = false, removeComponent }: any) => {
+const ShapeTwo = ({ setComponent, data, remove = false, removeComponent }: any) => {
 
 
 
@@ -22,7 +22,7 @@ const ShapeTwo = ({ setComponent, data, index, remove = false, removeComponent }
                     <i className="fas fa-search forget absolute" />
                 </div>
             </nav>
-            {remove && (<DeleteIcon remove={() => removeComponent(index)} />)}
+            {remove && (<DeleteIcon remove={removeComponent} />)}
         </ContainerShapeTwo>
     );
 }

@@ -24,7 +24,7 @@ const Structure = () => {
                 <div className={`section flex justify-center items-center ${getClassName('section-three')}`}
                     onClick={() => setSection('section-three')}
                 >
-                    Banner
+                    Section x
                 </div>
                 <div className={`section flex justify-center items-center ${getClassName('section-four')}`}
                     onClick={() => setSection('section-four')}
