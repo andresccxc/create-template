@@ -1,11 +1,11 @@
 import { ContainerShapeOne } from '../Styles';
+import DeleteIcon from '../../../DeletIcon';
 
-
-const ShapeOne = ({ data, setComponent }: any) => {
+const ShapeOne = ({ data, setComponent, remove = false, removeComponent }: any) => {
 
     return (
         <ContainerShapeOne
-            className={`text-${data?.styles?.color} rounded  py-4 px-3 flex items-center justify-between mb-3`}
+            className={`text-${data?.styles?.color} rounded  py-4 px-3 flex items-center justify-between mb-3 relative`}
             onClick={setComponent}
             bg={data?.styles?.background}
         >
@@ -16,6 +16,7 @@ const ShapeOne = ({ data, setComponent }: any) => {
                 ))}
                 {data?.content?.shoppingCart && (<i className="fas fa-shopping-cart shapeone-link pt-1" />)}
             </nav>
+            {remove && (<DeleteIcon remove={removeComponent} />)}
         </ContainerShapeOne>
     );
 }

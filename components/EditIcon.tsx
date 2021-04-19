@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 const IconContainer = styled.div`
-     right:5px;
-     top:5px;
+     left:5px;
+     top:2px;
      width:25px;
      height:25px;
      border-radius:100%;

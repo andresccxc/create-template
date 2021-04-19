@@ -6,14 +6,16 @@ import { PrincipalContext } from '../../../context/PrincipalContext';
 import { Container } from './Styles';
 
 const SectionOne = () => {
-    const { data: { section_one }, setSectionOne } = useContext(PrincipalContext);
+    const { data: { section_one }, setSectionOne, sectionOne } = useContext(PrincipalContext);
+
+    const addComponent = (component: string) => setSectionOne([...sectionOne, component]);
 
     return (
         <div className='flex flex-col items-center'>
             <h2 className='font-bold text-2xl mb-5'>Estructura del Header</h2>
             <Container>
-                <ShapeOne data={section_one?.header_one} setComponent={() => setSectionOne('one')} />
-                <ShapeTwo data={section_one?.header_two} setComponent={() => setSectionOne('two')} />
+                <ShapeOne data={section_one?.header_one} setComponent={() => addComponent('one')} />
+                <ShapeTwo data={section_one?.header_two} setComponent={() => addComponent('two')} />
             </Container>
         </div>
     );
@@ -23,15 +25,29 @@ export default SectionOne;
 
 
 export const SectionOneComponent = () => {
-    const { data: { section_one }, sectionOne } = useContext(PrincipalContext);
+    const { data: { section_one }, sectionOne, setSectionOne } = useContext(PrincipalContext);
 
-    const renderSection = {
-        'one': <ShapeOne data={section_one?.header_one} />,
-        'two': <ShapeTwo data={section_one?.header_two} />,
+    const removeComponent = (index: number) => {
+        setSectionOne(sectionOne.filter((ele: any, ind: number) => ind !== index));
     };
+
     return (
         <>
-            {renderSection[sectionOne]}
+            {sectionOne.map((ele: string, index: number) => {
+                return ele === 'one' ? (
+                    (<ShapeOne key={`shape-${index}`}
+                        data={section_one?.header_one}
+                        remove={true}
+                        removeComponent={()=>removeComponent(index)}
+                    />)
+                ) : (<ShapeTwo
+                    key={`shape-${index}`}
+                    data={section_one?.header_two}
+                    remove={true}
+                    removeComponent={()=>removeComponent(index)}
+                />)
+            })}
+
         </>
     );
 };

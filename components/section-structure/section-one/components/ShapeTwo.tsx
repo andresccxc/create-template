@@ -1,12 +1,13 @@
 import { ContainerShapeTwo } from '../Styles';
+import DeleteIcon from '../../../DeletIcon';
 
+const ShapeTwo = ({ setComponent, data, remove = false, removeComponent }: any) => {
 
-const ShapeTwo = ({ setComponent, data }: any) => {
 
 
     return (
         <ContainerShapeTwo
-            className="rounded  py-3 px-2 flex items-center justify-between mb-3"
+            className="rounded  py-3 px-2 flex items-center justify-between mb-3 relative"
             onClick={setComponent}
             bg={data?.styles?.background}
         >
@@ -21,6 +22,7 @@ const ShapeTwo = ({ setComponent, data }: any) => {
                     <i className="fas fa-search forget absolute" />
                 </div>
             </nav>
+            {remove && (<DeleteIcon remove={removeComponent} />)}
         </ContainerShapeTwo>
     );
 }

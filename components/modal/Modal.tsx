@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { ModalContext } from '../../context/ModalContext';
-import { changeImage, showImage, hideImage, countSelecteds } from '../../utils/Modal';
+import { showImage, hideImage, countSelecteds } from '../../utils/Modal';
 import { Container } from './Styles';
 
 const Modal = () => {
@@ -9,15 +9,14 @@ const Modal = () => {
 
     const [viewImage, setViewImage] = useState<boolean>(false);
     const [selectedImage, setSelectedImage] = useState<string>('');
-    const [modalImages, setModalImages] = useState(images);
+    const [modalImages, setModalImages] = useState(images.slice(0, images.length - 1));
     const [textImage, setTextImage] = useState({ description: '', image: '', show: false });
     const [bgsend, setBgsend] = useState('gray');
     const imageHeight = action && '130px';
     const sendClass = bgsend === '#075E54' && 'active-button';
     const bgSend2 = textImage.description ? '#075E54' : 'gray';
     const sendClass2 = bgSend2 === '#075E54' && 'active-button';
-
-
+  
     const closeModal = () => {
         setShowModal(false);
         setAction('');
@@ -35,21 +34,47 @@ const Modal = () => {
     const changeImagesBgTwo = () => {
         const saveChanges = bgsend === '#075E54';
         if (saveChanges) {
-            const images = modalImages.filter((image: any) => image.selected);
+            const property = images[images.length - 1];
+            const newImages = modalImages.filter((image: any) => image.selected);
             setTimeout(() => {
-                setMainImages({ ...mainImages, 'main-two': images });
+                setMainImages({
+                    ...mainImages, 'main-two': {
+                        ...mainImages['main-two'],
+                        [property]: newImages
+                    }
+                });
             }, 100);
             closeModal();
         };
+    };
+
+    const changeImage = () => {
+        setShowModal(false);
+        setAction('');
+        const property = images[images.length - 1];
+        setTimeout(() => {
+            setMainImages({
+                ...mainImages, 'main-one': {
+                    ...mainImages['main-one'],
+                    [property]: selectedImage
+                }
+            });
+        }, 100);
     };
 
     const selectImageWithText = (image: any) => setTextImage({ ...image, show: true });
     const changeTextImage = (e) => setTextImage({ ...textImage, description: e.target.value });
     const hideImageWithText = () => setTextImage({ description: '', image: '', show: false });
     const saveTextWhithImage = () => {
+        const property = images[images.length - 1];
         if (textImage.description) {
             setTimeout(() => {
-                setMainImages({ ...mainImages, 'main-four': textImage});
+                setMainImages({
+                    ...mainImages, 'main-four': {
+                        ...mainImages['main-four'],
+                        [property]: textImage
+                    }
+                });
             }, 100);
             closeModal();
         };
@@ -65,8 +90,8 @@ const Modal = () => {
                 </div>
 
                 <div className='flex flex-wrap images-container'>
-                    {modalImages?.map((image: any, index: number) => (
-                        <div className='modal-image-container relative' key={`image-${index}`}> <img className='modal-image cursor-pointer' src={image.image} alt="image"
+                    {modalImages?.map((image: any, index: number) => image.image && (
+                        <div className='modal-image-container relative' key={`image-${index}`}> <img className='modal-image cursor-pointer' src={image?.image} alt="image"
                             onClick={() => !action ? showImage(setViewImage, setSelectedImage, image.image) : action === 'images' ? selectImage(index) : selectImageWithText(image)}
                         />
                             {action === 'images' && (
@@ -90,7 +115,7 @@ const Modal = () => {
                         <i className="fas fa-arrow-left absolute text-white p-1"
                             onClick={() => hideImage(setViewImage, setSelectedImage)} />
                         <div className="send-button absolute flex justify-center items-center rounded-full"
-                            onClick={() => changeImage(setShowModal, setMainImages, mainImages, selectedImage, setAction)}>
+                            onClick={changeImage}>
                             <i className="fas fa-paper-plane text-white" />
                         </div>
                     </div>
@@ -111,7 +136,9 @@ const Modal = () => {
                     </div>
                 )}
 
+
             </section>
+
         </Container >
     );
 };

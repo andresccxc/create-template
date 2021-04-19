@@ -7,10 +7,10 @@ export const PrincipalContext = createContext(null);
 const PrincipalProvider = ({ children }) => {
 
     const [section, setSection] = useState<string>('section-one');
-    const [sectionOne, setSectionOne] = useState('');
-    const [sectionTwo, setSectionTwo] = useState('');
-    const [sectionThree, setSectionThree] = useState('');
-    const [sectionFour, setSectionFour] = useState('');
+    const [sectionOne, setSectionOne] = useState([]);
+    const [sectionTwo, setSectionTwo] = useState([]);
+    const [sectionThree, setSectionThree] = useState([]);
+    const [sectionFour, setSectionFour] = useState([]);
     const [data, setData] = useState({});
 
     useEffect(() => {
