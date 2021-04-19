@@ -37,10 +37,6 @@ export const Container = styled.div`
     .four-item{
       height:9.375rem;
     }
-    .four-item-text{
-      width:100%;
-      padding-right:1.25rem;
-    }
   }
 
 `;

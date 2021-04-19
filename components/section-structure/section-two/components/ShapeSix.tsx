@@ -1,7 +1,7 @@
 import DeleteIcon from '../../../DeletIcon';
 
 
-const ShapeSix = ({ setComponent, remove = false, removeComponent,index }: any) => {
+const ShapeSix = ({ setComponent, remove = false, removeComponent, id }: any) => {
     return (
         <div className="section-structure structure-three flex justify-around py-4 relative" onClick={setComponent}>
             <div className='three-section'>
@@ -18,7 +18,7 @@ const ShapeSix = ({ setComponent, remove = false, removeComponent,index }: any) 
                 <img className='w-full product-image m-auto' src="https://cdn.shopify.com/s/files/1/0485/4566/1094/products/Mi10-1_900x.jpg?v=1605797253" alt="cellphone" />
                 <p className='text-sm text-center mt-1'>Mate 40 pro</p>
             </div>
-            {remove && (<DeleteIcon remove={()=>removeComponent(index)} />)}
+            {remove && (<DeleteIcon remove={() => removeComponent(id)} />)}
         </div>
     );
 }

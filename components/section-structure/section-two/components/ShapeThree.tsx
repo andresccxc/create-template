@@ -2,7 +2,7 @@ import React from 'react';
 import DeleteIcon from '../../../DeletIcon';
 
 
-const Three = ({ setComponent, edit = false, remove = false, removeComponent,index }: any) => {
+const Three = ({ setComponent, edit = false, remove = false, removeComponent, id }: any) => {
 
     return (
         <div className="section-structure structure-three flex justify-around py-4 relative" onClick={setComponent}>
@@ -21,7 +21,7 @@ const Three = ({ setComponent, edit = false, remove = false, removeComponent,ind
                 <img className='rounded-image m-auto' src="https://cdn.shopify.com/s/files/1/0485/4566/1094/products/Mi10-1_900x.jpg?v=1605797253" alt="cellphone" />
                 <p className='text-xs text-center mt-1'>Mate 40 pro</p>
             </div>
-            {remove && (<DeleteIcon remove={()=>removeComponent(index)} />)}
+            {remove && (<DeleteIcon remove={() => removeComponent(id)} />)}
         </div>
     );
 }

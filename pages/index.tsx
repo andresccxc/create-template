@@ -23,7 +23,7 @@ const Home = () => {
   const { showModal } = useContext(ModalContext);
 
   return (
-    <div className='p-10 flex justify-around'>
+    <div className='p-4 xl:p-10 flex justify-around'>
       <Head>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" crossOrigin="anonymous" />
       </Head>

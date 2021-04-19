@@ -44,7 +44,7 @@ export const json = {
                 "https://cdn.shopify.com/s/files/1/0485/4566/1094/products/Realme6Pro-6_55eae03c-2dd7-404a-9fef-25adc03f1338_900x.jpg?v=1605842828",
                 "https://cdn.shopify.com/s/files/1/0485/4566/1094/products/Realme6Pro-4_900x.jpg?v=1602792151",
                 "https://cdn.shopify.com/s/files/1/0485/4566/1094/products/GalaxyNote20Ultra-4_900x.jpg?v=1602793598",
-                "https://cdn.shopify.com/s/files/1/0485/4566/1094/products/iPhone12Mini-8_61de2cf2-0c2e-4fa2-ad0d-6c1d61f0be17_900x.jpg?v=1610807674"
+                "https://cdn.shopify.com/s/files/1/0485/4566/1094/products/PocoM3-1_b4d4abe5-db18-4ce1-bf3c-d7894c9f5947_900x.jpg?v=1611942166",
             ]
         },
         main_four: {
@@ -64,7 +64,7 @@ export const json = {
                 {
                     image: "https://cdn.shopify.com/s/files/1/0485/4566/1094/products/Mi10-1_900x.jpg?v=1605797253",
                     description: "Tarjeta condensa xd"
-                },
+                }
 
             ]
         }
