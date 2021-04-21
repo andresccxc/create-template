@@ -21,8 +21,8 @@ body {
 .four-item {
   height: 9.375rem;
 }
-.four-item-text{
-  width:15.625rem;
-  padding-right:1.25rem;
+.four-item-text {
+  width: 15.625rem;
+  padding-right: 1.25rem;
   overflow-wrap: break-word;
 }

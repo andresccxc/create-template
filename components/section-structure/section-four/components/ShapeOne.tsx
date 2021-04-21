@@ -1,9 +1,17 @@
 import DeleteIcon from '../../../DeletIcon';
 import { ContainerShapeOne } from '../Styles';
+import { useContext } from 'react';
+import { DragContext } from 'context/DragContext';
 
-const ShapeOne = ({ setComponent, remove = false, removeComponent }: any) => {
+const ShapeOne = ({ remove = false, removeComponent, draggable = true }: any) => {
+
+    const { setComponent } = useContext(DragContext);
+
     return (
-        <ContainerShapeOne className='footer-section text-white py-2 rounded mb-4 relative mt-3' onClick={setComponent}>
+        <ContainerShapeOne className='footer-section text-white py-2 rounded mb-4 relative mt-3'
+            draggable={draggable}
+            onDragStart={()=>setComponent(5)}
+        >
             <nav className='nav-footer flex w-full justify-center'>
                 <p className='mx-2'>Trabaja con nostros</p>
                 <p className='mx-2'>Término y condiciones</p>

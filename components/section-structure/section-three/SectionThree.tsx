@@ -3,7 +3,8 @@ import { Container } from './Styles';
 import ShapeOne from './components/ShapeOne';
 import ShapeTwo from './components/ShapeTwo';
 import { PrincipalContext } from '../../../context/PrincipalContext';
-import EditIcon from '../../EditIcon';
+import { DragContext } from 'context/DragContext';
+
 
 const SectionThree = () => {
 
@@ -25,19 +26,21 @@ export default SectionThree;
 
 export const SectionThreeComponent = () => {
 
-    const { sectionThree, setSectionThree } = useContext(PrincipalContext);
+    const { components, setComponents } = useContext(DragContext);
 
-    const removeComponent = (index: number) => {
-        setSectionThree(sectionThree.filter((ele: any, ind: number) => ind !== index));
+
+    const removeComponent = (id: number) => {
+        setComponents(components.filter((ele: any) => ele.id !== id));
     };
 
     return (<>
-        {sectionThree?.map((ele: string, index: number) => {
-            return ele === 'one' ? (
-                <ShapeOne key={`section-${index}`} remove={true} removeComponent={()=>removeComponent(index)}/>
-            ) : (
-                <ShapeTwo key={`section-${index}`} remove={true} removeComponent={()=>removeComponent(index)}/>
-            );
+        {components?.map((ele: any, index: number) => {
+            return ele.type === 3 ? (
+                <ShapeOne key={`section-${index}`} remove={true} removeComponent={() => removeComponent(ele.id)} />
+            ) : ele.type === 4 ?
+                (
+                    <ShapeTwo key={`section-${index}`} remove={true} removeComponent={() => removeComponent(ele.id)} />
+                ) : '';
         })}
     </>);
 };

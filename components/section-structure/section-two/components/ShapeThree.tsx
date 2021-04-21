@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DragContext } from 'context/DragContext';
 import DeleteIcon from '../../../DeletIcon';
 
 
-const Three = ({ setComponent, edit = false, remove = false, removeComponent, id }: any) => {
+const Three = ({ remove = false, removeComponent, id, draggable = true }: any) => {
+
+    const { setComponent } = useContext(DragContext);
 
     return (
-        <div className="section-structure structure-three flex justify-around py-4 relative" onClick={setComponent}>
+        <div className="section-structure structure-three flex justify-around py-4 relative"
+            draggable={draggable}
+            onDragStart={() => setComponent('three')}
+        >
 
             <div className='three-section'>
                 <img className='rounded-image m-auto' src="https://cdn.shopify.com/s/files/1/0485/4566/1094/products/RedmiNote9T-6_6fefa032-9c80-468f-825f-14f69e77a2d0_900x.jpg?v=1613853936" alt="cellphone" />

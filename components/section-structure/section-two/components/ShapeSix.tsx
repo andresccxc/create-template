@@ -1,9 +1,17 @@
+import { DragContext } from 'context/DragContext';
+import { useContext } from 'react';
 import DeleteIcon from '../../../DeletIcon';
 
 
-const ShapeSix = ({ setComponent, remove = false, removeComponent, id }: any) => {
+const ShapeSix = ({ remove = false, removeComponent, id, draggable = true }: any) => {
+
+    const { setComponent } = useContext(DragContext);
+
     return (
-        <div className="section-structure structure-three flex justify-around py-4 relative" onClick={setComponent}>
+        <div className="section-structure structure-three flex justify-around py-4 relative"
+            draggable={draggable}
+            onDragStart={() => setComponent('six')}
+        >
             <div className='three-section'>
                 <img className='w-full product-image  m-auto' src="https://cdn.shopify.com/s/files/1/0485/4566/1094/products/RedmiNote9T-6_6fefa032-9c80-468f-825f-14f69e77a2d0_900x.jpg?v=1613853936" alt="cellphone" />
                 <p className='text-sm  text-center mt-1'>Mi 10 5G 128gb</p>

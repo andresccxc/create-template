@@ -3,12 +3,14 @@ import { ShapeOneComponent } from '../Styles';
 import { ModalContext } from '../../../../context/ModalContext';
 import EditIcon from '../../../EditIcon';
 import DeleteIcon from '../../../DeletIcon';
+import { DragContext } from 'context/DragContext';
 
-const ShapeOne = ({ data, setComponent, edit = false, remove = false, removeComponent, id }: any) => {
+const ShapeOne = ({ data, edit = false, remove = false, removeComponent, id, draggable = true }: any) => {
 
     const { setShowModal, setImages, mainImages } = useContext(ModalContext);
+    const { setComponent } = useContext(DragContext);
+    
     const { content: { images } } = data;
-
     const openModal = () => {
         setShowModal(true);
         const newImages = images.map((image: any) => { return { image } })
@@ -19,10 +21,14 @@ const ShapeOne = ({ data, setComponent, edit = false, remove = false, removeComp
 
 
     return (
-        <ShapeOneComponent className='relative' onClick={setComponent}>
+        <ShapeOneComponent
+            className='relative'
+            draggable={draggable}
+            onDragStart={()=>setComponent('one')}
+        >
             <img className='w-full h-full rounded' src={imgs && mainImages['main-one'][`shape-${id}`] || images[0]} alt="cellphone" />
             {edit && (<EditIcon icon='fas fa-camera' openModal={openModal} />)}
-            {remove && (<DeleteIcon remove={()=>removeComponent(id)} />)}
+            {remove && (<DeleteIcon remove={() => removeComponent(id)} />)}
         </ShapeOneComponent>
     );
 };

@@ -1,15 +1,19 @@
 import { ContainerShapeTwo } from '../Styles';
 import DeleteIcon from '../../../DeletIcon';
+import { useContext } from 'react';
+import { DragContext } from 'context/DragContext';
 
-const ShapeTwo = ({ setComponent, data, remove = false, removeComponent }: any) => {
+const ShapeTwo = ({ data, remove = false, removeComponent, draggable=true }: any) => {
 
-
+    const { setComponent } = useContext(DragContext);
 
     return (
         <ContainerShapeTwo
             className="rounded  py-3 px-2 flex items-center justify-between mb-3 relative"
             onClick={setComponent}
             bg={data?.styles?.background}
+            draggable={draggable}
+            onDragStart={() => setComponent(2)}
         >
             <i className={`${data?.content?.logo} shapetwo-logo relative`}></i>
             <nav className='shapeone-nav flex items-center'>

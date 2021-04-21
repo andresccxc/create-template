@@ -1,10 +1,17 @@
 import DeleteIcon from '../../../DeletIcon';
 import { ContainerShapeTwo } from '../Styles';
+import { useContext } from 'react';
+import { DragContext } from 'context/DragContext';
 
+const ShapeTwo = ({ remove = false, removeComponent, draggable = true }: any) => {
 
-const ShapeTwo = ({ setComponent, remove = false, removeComponent }: any) => {
+    const { setComponent } = useContext(DragContext);
+
     return (
-        <ContainerShapeTwo className='rounded relative' onClick={setComponent}>
+        <ContainerShapeTwo className='rounded relative'
+            draggable={draggable}
+            onDragStart={()=>setComponent(6)}
+        >
             <div className="columnf-footer flex justify-center py-2 items-center flex-wrap mt-3">
                 <div className='footer-column'>
                     <img className='col-img m-auto' src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/ecosystem/payment.svg" alt="card image" />

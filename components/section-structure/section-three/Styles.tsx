@@ -4,8 +4,8 @@ export const Container = styled.div`
    width:25rem;
 `;
 
-export const ContainerShapeOne:any = styled.div`
-      border:1px solid ${(props: any) => props.border ? props.border : 'transparent'};
+export const ContainerShapeOne: any = styled.div`
+      border:1px solid ${(props: any) => props.border ? props.border : '#f1f1f1'};
       cursor: pointer;
     .cont-icon{
         border:1px solid #f1f1f1;
